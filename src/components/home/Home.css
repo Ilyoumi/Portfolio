@@ -147,6 +147,7 @@
     .home-img{
         width: 250px;
         height: 250px;
+        box-shadow: inset 0 0 0 8px rgb(255 255 255 / 30%);
     }
     .home-scroll{
         margin-left: 7.5rem;
@@ -154,15 +155,34 @@
 }
 /* --Medium device--  */
 @media screen and (max-width: 768px) {
-    
+    .home-content{
+        grid-template-columns: 0.5fr 3fr;
+        padding-top: 3.5rem;
+    }
+    .home-img{
+        order: initial;
+        justify-self: initial;
+        
+    }
+    .home-data{
+        grid-column: 1/3;
+    }
+    .home-scroll{
+        display: none;
+    }
 }
+
+
 /* --Small device--  */
 @media screen and (max-width: 350px) {
-    .container{
-        margin-left: var(--mb-1);
-        margin-right: var(--mb-1);
-        box-shadow: inset 0 0 0 4px rgb(255 255 255 / 30%);
-        
+    .home-img{
+        width: 180px;
+        height: 180px;
+    }
+    .home-hand{
+        width: 22px;
+        height: 22px;
     }
 
 }
+
