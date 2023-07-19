@@ -46,6 +46,6 @@ const ScrollDown = () => {
             </a>
         </div>
     )
-}
+} 
 
 export default ScrollDown

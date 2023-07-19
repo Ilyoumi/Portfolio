@@ -1,4 +1,5 @@
 .home-container{
+    
     row-gap: 8rem;
 }
 
@@ -83,6 +84,15 @@
     }
 }
 
+.home-scroll{
+
+    margin-left: 9.25rem;
+}
+.home-scroll-button {
+    line-height: 32px; /* Adjust the line-height value as needed */
+}
+
+
 
 
 .wheel{
@@ -97,6 +107,18 @@
         transform: translateY(3.75rem);
     }
 }
+
+.home-scroll-name{
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    margin-right: var(--mb-0-25);
+    margin-left: 2px;
+}
+.home-scroll-arrow{
+    font-size: 1.25rem;
+    color: var(--text-color);
+}
+
 
 /* --Large device--  */
 @media screen and (max-width: 992px) {

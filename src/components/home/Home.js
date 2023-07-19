@@ -12,7 +12,8 @@ const Home = () => {
                     <div className="home-img"></div>
                     <Data />
                 </div>
-                <Scroll />
+                
+                
             </div>
             
         </section>
