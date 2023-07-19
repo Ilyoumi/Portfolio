@@ -38,6 +38,7 @@
 .nav-icon, 
 .nav-toggle{
     display: none;
+    cursor: pointer;
 }
 
 
@@ -121,8 +122,8 @@
         font-size: 1.5rem;
         cursor: pointer;
         color: var(--title-color);
-      }
-      .nav-close:hover {
-        color: var(--title-color-dark);
-      }
+        }
+        .nav-close:hover {
+            color: var(--title-color-dark);
+        }
 }
