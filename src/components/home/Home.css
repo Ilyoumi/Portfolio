@@ -162,7 +162,8 @@
     .home-img{
         order: initial;
         justify-self: initial;
-        
+        width: 200px;
+        height: 200px;
     }
     .home-data{
         grid-column: 1/3;
