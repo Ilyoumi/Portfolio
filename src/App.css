@@ -126,7 +126,7 @@ img{
     margin-right: auto;
 }
 .grid{
-    display: flex;
+    display: grid;
     gap: 1.5rem;
 }
 /* --Buttons--  */
@@ -145,7 +145,7 @@ img{
     margin-left: var(--mb-0-5);
 }
 .button-flex{
-    display: inline-block;
+    display: inline-flex;
     align-items: center;
 }
 /* --Breakpoints--  */

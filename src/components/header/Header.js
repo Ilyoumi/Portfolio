@@ -9,7 +9,7 @@ const Header = () => {
             <nav className="nav container">
                 <a href="index.html" className="nav-logo">Ghizlane</a>
                 <div className={toggle? "nav-menu show-menu" : "nav-menu "}>
-                    <ul className="nav-list grid">
+                    <ul className="nav-list ">
                         <li className="nav-item">
                             <a href="#home" className="nav-link active-link">
                                 <i className="uil uil-estate nav-icon">
