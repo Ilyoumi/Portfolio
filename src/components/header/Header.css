@@ -45,7 +45,8 @@
 /* --Active link--  */
 .active-link,
 .nav-link:hover{
-    color:var(--title-color-dark)
+    color : rgb(232, 129, 166);
+    font-weight: var(--font-bold);
 }
 
 /* --Breakpoints--  */
