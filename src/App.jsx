@@ -12,6 +12,7 @@ export default function App() {
    const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("App component mounted!");
     const timer = setTimeout(() => setLoading(false), 2000); // Show for 2s
     return () => clearTimeout(timer);
   }, []);
