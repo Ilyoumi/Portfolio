@@ -1,10 +1,59 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
+  const formRef = useRef();
+  const [sending, setSending] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
+  const [popupType, setPopupType] = useState("success"); // success or error
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setSending(true);
+
+    emailjs
+      .sendForm(
+        "service_ttrn3bg",
+        "template_ygzq6pa",
+        formRef.current,
+        "X5q7OW63P8yjSXfEx"
+      )
+      .then(
+        () => {
+          setSending(false);
+          setPopupType("success");
+          setPopupMessage("✅ Your message has been sent successfully!");
+          setShowPopup(true);
+          formRef.current.reset();
+          setTimeout(() => setShowPopup(false), 3000);
+        },
+        (error) => {
+          console.error(error);
+          setSending(false);
+          setPopupType("error");
+          setPopupMessage("❌ Failed to send message. Please try again.");
+          setShowPopup(true);
+          setTimeout(() => setShowPopup(false), 3000);
+        }
+      );
+  };
+
   return (
-    <section id="contact" className="fade-in-section py-16">
+    <section id="contact" className="fade-in-section py-16 relative">
+      {/* Popup Notification */}
+      {showPopup && (
+        <div
+          className={`fixed top-6 right-6 px-6 py-4 rounded-xl shadow-lg text-white transition-all duration-500 ${
+            popupType === "success" ? "bg-pink-500" : "bg-red-500"
+          }`}
+        >
+          {popupMessage}
+        </div>
+      )}
+
       <div className="grid md:grid-cols-3 gap-10 items-center">
-        {/* Contact Form - 2/3 */}
+        {/* Contact Form */}
         <div className="md:col-span-2 bg-gradient-to-br from-[#FFF8FB] to-[#FFF0F6] rounded-3xl shadow-xl p-10">
           <h2 className="text-3xl font-bold mb-3 text-[#2b2730]">
             Let’s work together
@@ -14,26 +63,37 @@ const Contact = () => {
             hear from you.
           </p>
 
-          <form className="space-y-5">
+          <form ref={formRef} onSubmit={sendEmail} className="space-y-5">
             <input
+              name="fromName"
               className="w-full border border-transparent rounded-xl px-5 py-4 bg-white/70 backdrop-blur-sm focus:outline-none focus:border-pink-400 focus:ring-2 focus:ring-pink-300 transition text-lg"
               placeholder="Your name"
               type="text"
+              required
             />
             <input
+              name="fromEmail"
               className="w-full border border-transparent rounded-xl px-5 py-4 bg-white/70 backdrop-blur-sm focus:outline-none focus:border-pink-400 focus:ring-2 focus:ring-pink-300 transition text-lg"
               placeholder="Email"
               type="email"
+              required
             />
             <textarea
+              name="message"
               className="w-full border border-transparent rounded-xl px-5 py-4 bg-white/70 backdrop-blur-sm h-40 resize-none focus:outline-none focus:border-pink-400 focus:ring-2 focus:ring-pink-300 transition text-lg"
               placeholder="Message"
+              required
             ></textarea>
             <button
               type="submit"
-              className="w-full bg-[#FF6FA1] text-white px-6 py-4 rounded-xl font-semibold hover:bg-pink-600 shadow-lg hover:shadow-pink-300/50 transition text-lg"
+              disabled={sending}
+              className={`w-full text-white px-6 py-4 rounded-xl font-semibold shadow-lg text-lg transition ${
+                sending
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-[#FF6FA1] hover:bg-pink-600 hover:shadow-pink-300/50"
+              }`}
             >
-              Send message
+              {sending ? "Sending..." : "Send message"}
             </button>
           </form>
 
@@ -48,7 +108,7 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Illustration - 1/3 */}
+        {/* Illustration */}
         <div className="relative flex justify-center items-center">
           <svg viewBox="0 0 500 500" className="absolute inset-0 w-full h-full">
             <defs>

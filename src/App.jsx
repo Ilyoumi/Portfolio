@@ -6,6 +6,7 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Socials from "./components/Socials";
 
 export default function App() {
 
@@ -42,6 +43,7 @@ export default function App() {
     ) : (
       <>
         <Navbar />
+        <Socials />
         <main className="max-w-6xl mx-auto px-6 md:px-8">
           <Hero />
           <About />
